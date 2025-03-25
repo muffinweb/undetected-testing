@@ -2,7 +2,7 @@ from seleniumbase import SB
 
 # TrackNumber
 
-trackingNumber = ""
+trackingNumber = "TRKU4445381"
 
 # Elements to use
 input_element = "body > app-root > app-layout > div > div > div > app-tracking > div > div.col-12 > div > div > div.field.col-12.md\\:col-6.mt-3 > span > input"
@@ -29,7 +29,13 @@ with SB(uc=True, test=True) as sb:
 
     sb.sleep(1)
 
-    print("seleniumbase successfully passed the case")
+    sb.type(input_element, trackingNumber)
+    sb.sleep(1)
+    sb.click(submit_element)
+
+    expected_response_available = sb.assert_element('label[class="text-xl font-semibold summary-box-text-color"]')
+
+    print("Expected Response Availibity: " + str(expected_response_available))
 
 
 
