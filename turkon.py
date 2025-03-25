@@ -8,7 +8,7 @@ trackingNumber = "TRKU4445381"
 input_element = "body > app-root > app-layout > div > div > div > app-tracking > div > div.col-12 > div > div > div.field.col-12.md\\:col-6.mt-3 > span > input"
 submit_element = "body > app-root > app-layout > div > div > div > app-tracking > div > div.col-12 > div > div > div.field.col-12.md\\:col-2.mt-3 > button"
 
-with SB(uc=True, test=True, headless2=True) as sb:
+with SB(uc=True, test=True) as sb:
     url = "https://myturkonline.turkon.com/tracking"
     sb.activate_cdp_mode(url)
 
