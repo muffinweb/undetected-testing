@@ -8,14 +8,9 @@ trackingNumber = "TRKU4445381"
 input_element = "body > app-root > app-layout > div > div > div > app-tracking > div > div.col-12 > div > div > div.field.col-12.md\\:col-6.mt-3 > span > input"
 submit_element = "body > app-root > app-layout > div > div > div > app-tracking > div > div.col-12 > div > div > div.field.col-12.md\\:col-2.mt-3 > button"
 
-with SB(uc=True, test=True) as sb:
+with SB(uc=True, test=True, headless2=True) as sb:
     url = "https://myturkonline.turkon.com/tracking"
-    sb.uc_open_with_reconnect(url, 5)
-
-    #Recaptcha solving thing
-    sb.uc_gui_click_captcha()
-    sb.sleep(2)
-    sb.uc_gui_handle_captcha()
+    sb.activate_cdp_mode(url)
 
     sb.assert_element(input_element)
     sb.highlight(input_element)
@@ -27,15 +22,15 @@ with SB(uc=True, test=True) as sb:
 
     sb.post_message_and_highlight("All elements are available", "body")
 
-    sb.sleep(1)
-
-    sb.type(input_element, trackingNumber)
-    sb.sleep(1)
-    sb.click(submit_element)
-
-    expected_response_available = sb.assert_element('label[class="text-xl font-semibold summary-box-text-color"]')
-
-    print("Expected Response Availibity: " + str(expected_response_available))
+    # sb.sleep(1)
+    #
+    # sb.type(input_element, trackingNumber)
+    # sb.sleep(1)
+    # sb.click(submit_element)
+    #
+    # expected_response_available = sb.assert_element('label[class="text-xl font-semibold summary-box-text-color"]')
+    #
+    # print("Expected Response Availibity: " + str(expected_response_available))
 
 
 
